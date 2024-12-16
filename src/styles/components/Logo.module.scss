@@ -1,24 +1,24 @@
 @use '../abstract/variables' as *;
 
 .logo {
-  &:link,
-  &:visited,
-  &:hover,
-  &:focus,
-  &:active {
-    all: unset;
-    cursor: pointer;
-    text-transform: capitalize;
-    font-size: 2.4rem;
-    font-family: $font-display;
-    color: var(--color-tertiary);
-  }
+    &:link,
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+        all: unset;
+        cursor: pointer;
+        text-transform: capitalize;
+        font-size: 2.4rem;
+        font-family: $font-display;
+        color: var(--color-tertiary);
+    }
 
-  &--main {
-    font-weight: 700;
-  }
+    &--main {
+        font-weight: 700;
+    }
 
-  &--sub {
-    font-weight: 300;
-  }
+    &--sub {
+        font-weight: 300;
+    }
 }
