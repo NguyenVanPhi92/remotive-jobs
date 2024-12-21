@@ -16,9 +16,7 @@ export const getId = () => `id${Math.random().toString(16).slice(2)}`
 export const toId = (text) => text.toLowerCase().replace(' ', '_')
 
 export const trimString = (str, len) => {
-    if (str.length > len) {
-        return `${str.substring(0, len)}...`
-    }
+    if (str.length > len) return `${str.substring(0, len)}...`
     return str
 }
 

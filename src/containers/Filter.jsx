@@ -20,11 +20,8 @@ const Filter = ({ className = '', fullTime, locations, selectedLocation }) => {
     const { all, others } = locations
 
     let locs = []
-    if (others.length) {
-        locs = ['all', ...all, 'others']
-    } else {
-        locs = ['all', ...all]
-    }
+
+    others.length ? (locs = ['all', ...all, 'others']) : (locs = ['all', ...all])
 
     const classes = `${styles.filter} ${className}`
 
@@ -34,9 +31,7 @@ const Filter = ({ className = '', fullTime, locations, selectedLocation }) => {
         router.push(router)
     }
 
-    const locationSearchHandler = (location) => {
-        setSearchLocation(location)
-    }
+    const locationSearchHandler = (location) => setSearchLocation(location)
 
     const fullTimeChangeHandler = (e) => {
         router.query.page = 1
