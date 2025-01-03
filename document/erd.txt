@@ -1,0 +1,64 @@
++----------------+       +----------------+       +----------------+
+|    users       |       |   companies    |       |     jobs        |
++----------------+       +----------------+       +----------------+
+| user_id (PK)   |<------| user_id (FK)   |       | job_id (PK)     |
+| email          |       | company_id (PK)|<------| company_id (FK) |
+| password       |       | name           |       | title           |
+| full_name      |       | description    |       | description     |
+| role           |       | website        |       | salary          |
+| created_at     |       | logo           |       | location        |
+| updated_at     |       | created_at     |       | category_id (FK)|
++----------------+       | updated_at     |       | created_at      |
+                         +----------------+       | updated_at      |
+                                                  +----------------+
+                                                        |
+                                                        |
+                                                        v
++----------------+       +----------------+       +----------------+
+| applications   |       |  categories    |       |     jobs        |
++----------------+       +----------------+       +----------------+
+| application_id |       | category_id (PK)|<------| category_id (FK)|
+| user_id (FK)   |       | name           |       | job_id (PK)     |
+| job_id (FK)    |       | description    |       | title           |
+| status         |       | created_at     |       | description     |
+| applied_at     |       | updated_at     |       | salary          |
++----------------+       +----------------+       | location        |
+                                                  | created_at      |
+                                                  | updated_at      |
+                                                  +----------------+
+
+                                                  4. Giải thích sơ đồ
+
+
+users:
+Lưu trữ thông tin người dùng (ứng viên và nhà tuyển dụng).
+Mỗi người dùng có thể tạo một công ty (companies).
+
+companies:
+Lưu trữ thông tin công ty.
+Mỗi công ty có thể đăng nhiều công việc (jobs).
+
+jobs:
+Lưu trữ thông tin công việc.
+Mỗi công việc thuộc về một danh mục (categories).
+
+applications:
+Lưu trữ thông tin đơn ứng tuyển.
+Mỗi đơn ứng tuyển liên kết với một ứng viên (users) và một công việc (jobs).
+
+categories:
+Lưu trữ các danh mục công việc.
+Mỗi công việc thuộc về một danh mục.
+
+5. Ví dụ sử dụng
+a. Tạo công ty:
+Người dùng (user) đăng ký với vai trò employer.
+Người dùng tạo một công ty (company) và liên kết với tài khoản của họ.
+b. Đăng công việc: Công ty (company) đăng các công việc (jobs) thuộc các danh mục (categories) khác nhau.
+c. Ứng tuyển: Ứng viên (user) tìm kiếm công việc và gửi đơn ứng tuyển (applications).
+d. Quản lý đơn ứng tuyển: Nhà tuyển dụng có thể xem và cập nhật trạng thái các đơn ứng tuyển.
+
+6. Kết luận
+ERD trên là một thiết kế cơ bản cho hệ thống web career.
+
+Bạn có thể mở rộng thêm các tính năng như đánh giá công ty, thông báo, hoặc quản lý hồ sơ ứng viên.
