@@ -12,19 +12,10 @@ import styles from '../styles/containers/Job.module.scss'
 
 const transform = (node) => {
     // Do not render any <span> tags
-    if (node.type === 'tag' && node.name === 'br') {
-        return null
-    }
-
-    if (node.children?.length === 0) {
-        return null
-    }
-
+    if (node.type === 'tag' && node.name === 'br') return null
+    if (node.children?.length === 0) return null
     // Adding target='_blank' to link
-    if (node.type === 'tag' && node.name === 'a') {
-        node.attribs.target = '_blank'
-    }
-
+    if (node.type === 'tag' && node.name === 'a') node.attribs.target = '_blank'
     // Do not render any tags with &nbsp;
     if (
         node.type === 'tag' &&
@@ -33,9 +24,7 @@ const transform = (node) => {
         node.children[0].data
     ) {
         // node.children[0].data.trim();
-        if (node.children[0].data.trim().length === 0) {
-            return null
-        }
+        if (node.children[0].data.trim().length === 0) return null
         // return <br />;
     }
 }
@@ -60,12 +49,9 @@ const Job = ({
                     <HiArrowNarrowLeft />
                     Back to search
                 </Button>
-
                 <MutedText className={styles['aside__apply']}>how to apply</MutedText>
-
                 <div className={styles['aside__content']}>
                     <p>Please visit the Remotive page for more information</p>
-
                     <Button
                         type='link'
                         to={url}
@@ -100,9 +86,7 @@ const Job = ({
                 />
 
                 <main className={styles['job__description']}>
-                    {ReactHtmlParser(description, {
-                        transform
-                    })}
+                    {ReactHtmlParser(description, { transform })}
                 </main>
             </main>
         </section>

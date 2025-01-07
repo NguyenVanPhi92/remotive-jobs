@@ -8,9 +8,7 @@ import styles from '../styles/containers/Jobs.module.scss'
 const Jobs = ({ jobs, totalPages, currentPage, className }) => {
     const classes = `${styles['jobs']} ${className}`
     console.log({ jobs })
-    if (!jobs.length) {
-        return <Error message='Oops!... No results found' />
-    }
+    if (!jobs.length) return <Error message='Oops!... No results found' />
 
     return (
         <ul className={classes}>

@@ -12,7 +12,6 @@ const SearchBar = ({
     ...props
 }) => {
     const [value, setValue] = useState(defaultValue)
-
     const classes = `${styles['search-bar']} ${className || ''}`
 
     const changeHandler = (e) => {

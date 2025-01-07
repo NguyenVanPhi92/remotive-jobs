@@ -23,14 +23,8 @@ const filter = ({ jobs, fullTime = false, location = 'all', otherLocations = [] 
 export const getAllJobs = async (query = '', fullTime = false, location = 'all') => {
     const res = await axios.get(requests.all(query))
     const locations = getLocations(res.data.jobs)
-
     return {
-        jobs: filter({
-            jobs: res.data.jobs,
-            fullTime,
-            otherLocations: locations.others,
-            location
-        }),
+        jobs: filter({ jobs: res.data.jobs, fullTime, otherLocations: locations.others, location }),
         locations
     }
 }
@@ -50,18 +44,11 @@ export const getJobsByCategory = async (
 ) => {
     const res = await axios.get(requests.categories(category, query))
     const locations = getLocations(res.data.jobs)
-
     return {
-        jobs: filter({
-            jobs: res.data.jobs,
-            fullTime,
-            otherLocations: locations.others,
-            location
-        }),
+        jobs: filter({ jobs: res.data.jobs, fullTime, otherLocations: locations.others, location }),
         locations
     }
 }
-
 export const getJobsCategories = async () => {
     const res = await axios.get(requests.categories())
     const categories = res.data.jobs.map((category) => category.slug)
@@ -71,19 +58,15 @@ export const getJobsCategories = async () => {
 export const getLocations = (jobs) => {
     const locations = []
     const count = {}
-
     jobs.forEach((job) => {
         const location = job.candidate_required_location
         if (!location.trim().length) return
         count[location] = count[location] ? count[location] + 1 : 1
         locations.push(location)
     })
-
     const uniqueLocations = [...new Set(locations)]
-
     // Sorting locations with having max jobs
     const sortedUniqueLocations = uniqueLocations.sort((a, b) => count[b] - count[a])
-
     return {
         all: sortedUniqueLocations.slice(0, MAX_LOCATIONS),
         others: sortedUniqueLocations.slice(MAX_LOCATIONS, -1)
@@ -96,20 +79,17 @@ export const getLocations = (jobs) => {
  * @returns {Object} - Job
  * @async
  */
-
 export const getJobById = async (id) => {
     const { jobs } = await getAllJobs()
     const job = jobs.find((job) => job.id.toString() === id)
     return job
 }
-
 /**
  * Returns jobs of the given page
  * @param {Number} page - page number
  * @param {Array} jobs - all the jobs of the given
  * @returns {Array} - Jobs of the given page n
  */
-
 export const getJobsPerPage = (page, jobs) => {
     /*
      * if page === 1
@@ -119,10 +99,8 @@ export const getJobsPerPage = (page, jobs) => {
      * end: 1 * jobs per page (10)
      * end: 1 * 10 = 10 (10 will be excluded)
      */
-
     const start = (page - 1) * JOBS_PER_PAGE
     const end = page * JOBS_PER_PAGE
-
     return jobs.slice(start, end)
 }
 

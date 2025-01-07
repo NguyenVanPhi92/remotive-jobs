@@ -14,9 +14,7 @@ export const getServerSideProps = async (ctx) => {
     const page = ctx.query?.page ?? 1
     const location = ctx.query?.location ?? 'all'
     const fullTime = ctx.query?.fullTime
-
     const { jobs, locations } = await getJobsByCategory(category, query, +fullTime, location)
-
     const categories = await getJobsCategories()
     const totalPages = getTotalPages(jobs.length)
 

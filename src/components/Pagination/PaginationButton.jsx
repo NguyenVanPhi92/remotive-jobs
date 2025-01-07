@@ -13,7 +13,6 @@ const PaginationButton = ({ number = null, type, disable = false, totalPages, cu
 
     const clickHandler = (e) => {
         if (disable) return
-
         if (type) {
             if (type === 'prev') {
                 router.query.page = currentPage - 1
@@ -26,7 +25,6 @@ const PaginationButton = ({ number = null, type, disable = false, totalPages, cu
             }
             return
         }
-
         router.query.page = +e.target.id
         router.push(router)
         // dispatch(setCurrentPage(+e.target.id));

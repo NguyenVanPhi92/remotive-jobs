@@ -6,7 +6,6 @@ export const app = {
     github: 'https://github.com/vatsalsinghkv/remotive-jobs',
     image: 'https://user-images.githubusercontent.com/68834718/189035104-aa71647e-33e4-442a-a2f9-c0d50bba2db1.png'
 }
-
 export const author = {
     name: 'Vatsal Singh',
     facebook: 'https://www.facebook.com/vatsalsinghkv',
@@ -14,7 +13,6 @@ export const author = {
     twitter: 'https://twitter.com/vatsalsinghkv',
     github: 'https://github.com/vatsalsinghkv'
 }
-
 export const getJobSeoData = ({ name, category, company, salary, location }) => ({
     title: `${capitalize(name)} | ${capitalize(company)} | ${capitalize(category)}`,
     description: `A ${category} ${capitalize(name)} remote job in the company ${capitalize(
@@ -36,7 +34,6 @@ export const getJobSeoData = ({ name, category, company, salary, location }) => 
         'work from home jobs'
     ]
 })
-
 export const getSeoData = (
     categories = 'Programming, Support, Design and more',
     profiles = 'developer, customer support rep, product or sales professional'

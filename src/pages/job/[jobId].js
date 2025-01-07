@@ -6,10 +6,7 @@ import { getJobSeoData } from '../../lib/utils/portfolio'
 export const getServerSideProps = async (ctx) => {
     const { jobId } = ctx.params
     const job = await getJobById(jobId)
-
-    return {
-        props: { job }
-    }
+    return { props: { job } }
 }
 
 export default function JobPage({ job }) {

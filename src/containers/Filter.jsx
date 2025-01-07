@@ -12,33 +12,24 @@ const Filter = ({ className = '', fullTime, locations, selectedLocation }) => {
     const router = useRouter()
     const [searchLocation, setSearchLocation] = useState('')
     const [allLocations] = useState([...locations.all, ...locations.others])
-
     const searchedLocations = allLocations
         .filter((l) => l.toLowerCase().includes(searchLocation.toLowerCase()))
         .slice(0, MAX_LOCATIONS + 2)
-
     const { all, others } = locations
-
     let locs = []
-
     others.length ? (locs = ['all', ...all, 'others']) : (locs = ['all', ...all])
-
     const classes = `${styles.filter} ${className}`
-
     const locationChangeHandler = (e) => {
         router.query.page = 1
         router.query.location = e.target.value
         router.push(router)
     }
-
     const locationSearchHandler = (location) => setSearchLocation(location)
-
     const fullTimeChangeHandler = (e) => {
         router.query.page = 1
         router.query.fullTime = e.target.checked ? 1 : 0
         router.push(router)
     }
-
     return (
         <aside className={classes}>
             <Input
@@ -48,15 +39,12 @@ const Filter = ({ className = '', fullTime, locations, selectedLocation }) => {
                 defaultChecked={fullTime}
                 onChange={fullTimeChangeHandler}
             />
-
             <MutedText className={styles['filter__heading']}>location</MutedText>
-
             <SearchBar
                 placeholder='City, state, zip code or country'
                 icon={<Icon />}
                 onChange={locationSearchHandler}
             />
-
             <Form
                 className={styles['filter__form']}
                 onChange={locationChangeHandler}

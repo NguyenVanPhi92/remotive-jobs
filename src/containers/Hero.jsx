@@ -6,7 +6,6 @@ import styles from '../styles/containers/Hero.module.scss'
 
 const Hero = ({ categories, selectedCategory = 'all', search = '' }) => {
     const router = useRouter()
-
     const categoriesChangeHandler = (category) => {
         if (category === 'all') {
             router.push('/')
@@ -14,17 +13,13 @@ const Hero = ({ categories, selectedCategory = 'all', search = '' }) => {
         }
         router.push(`/category/${category}`)
     }
-
     const submitHandler = (value) => {
         if (!value) return
         const baseURL =
             selectedCategory === 'all' || selectedCategory === ''
                 ? ''
                 : `category/${selectedCategory}`
-        router.push({
-            pathname: `/${baseURL}`,
-            query: { search: value }
-        })
+        router.push({ pathname: `/${baseURL}`, query: { search: value } })
     }
 
     return (
